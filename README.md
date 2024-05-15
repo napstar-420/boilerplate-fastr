@@ -4,9 +4,6 @@
 
 Hi! Welcome to the Fastr.health Monorepo. 🎉
 
-Why fastr.health? It's a random domain I have laying around and you guys have no Route53 domains, so it's a good way to intro how the
-Infrastructure-as-Code works.
-
 ## What's in it?
 
 - [SST](https://sst.dev) - Infrastructure-as-Code for AWS as well as runtime helpers for Lambda & Secret/Config handling.
@@ -113,7 +110,7 @@ nothing else helps enforce some common methods of making smaller, more targetted
 - `packages/jobs` - Typed Jobs and SQS Client for interacting with `queue`.
 - `packages/tsconfig` - TypeScript config shared between all libraries, frontend & backend services.
 
-## @oyed To-do
+## To-do
 
 - What AWS region to use? Just using `us-east-2` at the moment.
 - AWS SSO _is_ set-up, but there are some permission issues I don't want to spend too long on right now - will just use credentials for now.
