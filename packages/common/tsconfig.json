@@ -1,0 +1,7 @@
+{
+  "extends": "@fastr/tsconfig/library.json",
+  "compilerOptions": {
+    "outDir": "build",
+    "baseUrl": "."
+  }
+}

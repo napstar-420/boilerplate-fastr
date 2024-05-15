@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "@fastr/seeders",
+  "version": "1.0.0",
+  "scripts": {
+    "seed": "pnpm build && sst bind node build/index.mjs",
+    "typecheck": "tsc --noEmit",
+    "build": "node build.mjs",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@planetscale/database": "^1.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.4",
+    "@fastr/orm": "workspace:*",
+    "@fastr/tsconfig": "workspace:*",
+    "esbuild": "^0.19.11",
+    "eslint": "^8.56.0",
+    "eslint-config-fastr": "workspace:*",
+    "tslib": "^2.6.2",
+    "typescript": "5.3.3"
+  }
+}

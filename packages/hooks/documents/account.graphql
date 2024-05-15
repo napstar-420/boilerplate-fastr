@@ -1,0 +1,35 @@
+fragment AccountProviderData on AccountProvider {
+  id
+  key
+  name
+  order
+}
+
+fragment AccountData on Account {
+  id
+  provider {
+    ...AccountProviderData
+  }
+  identity
+  name
+  image
+  created_at
+}
+
+query accountProviders {
+  accountProviders {
+    ...AccountProviderData
+  }
+}
+
+query accountProvider($id: ID!) {
+  accountProvider(id: $id) {
+    ...AccountProviderData
+  }
+}
+
+query accountProviderKey($key: AccountProviderKey!) {
+  accountProviderKey(key: $key) {
+    ...AccountProviderData
+  }
+}

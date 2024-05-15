@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "@fastr/app",
+  "scripts": {
+    "generate": "sst bind 'nuxt generate'",
+    "build": "sst bind 'nuxt build'",
+    "postinstall": "nuxt prepare",
+    "dev": "sst bind 'nuxt dev'"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.9",
+    "quasar": "^2.14.3"
+  },
+  "devDependencies": {
+    "@fastr/hooks": "workspace:*",
+    "@nuxtjs/apollo": "next",
+    "eslint": "^8.56.0",
+    "eslint-config-fastr": "workspace:*",
+    "nuxt-quasar-ui": "^2.0.7",
+    "nuxt": "^3.9.1",
+    "vue": "^3.4.10",
+    "vue-router": "^4.2.5",
+    "typescript": "^5.3.3"
+  }
+}

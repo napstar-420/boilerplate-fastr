@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "@fastr/tsconfig",
+  "version": "1.0.0",
+  "files": [
+    "backend.json",
+    "base.json",
+    "frontend.json",
+    "library.json"
+  ]
+}

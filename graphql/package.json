@@ -1,0 +1,42 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "@fastr/graphql",
+  "version": "1.0.0",
+  "scripts": {
+    "generate": "sst bind 'cross-env GENERATE_OUT=true node build/schema.mjs' --stage production",
+    "build": "node build.mjs && pnpm run generate",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@envelop/parser-cache": "^7.0.0",
+    "@envelop/validation-cache": "^7.0.0",
+    "@pothos/core": "^3.41.0",
+    "@pothos/plugin-errors": "^3.11.1",
+    "@pothos/plugin-scope-auth": "^3.20.0",
+    "@pothos/plugin-simple-objects": "^3.7.0",
+    "@pothos/plugin-with-input": "^3.10.1",
+    "@fastr/id": "workspace:*",
+    "graphql": "^16.8.1",
+    "graphql-scalars": "^1.22.4",
+    "sst": "2.39.5"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.131",
+    "@types/cookie": "^0.6.0",
+    "@types/node": "^20.11.4",
+    "@fastr/common": "workspace:*",
+    "@fastr/flags": "workspace:*",
+    "@fastr/jobs": "workspace:*",
+    "@fastr/orm": "workspace:*",
+    "@fastr/tsconfig": "workspace:*",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.19.11",
+    "eslint": "^8.56.0",
+    "eslint-config-fastr": "workspace:*",
+    "tslib": "^2.6.2",
+    "typescript": "5.3.3",
+    "undici": "^6.3.0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "type": "module",
+  "name": "@fastr/queue",
+  "version": "1.0.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "sst": "2.39.5"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.131",
+    "@types/node": "^20.11.4",
+    "@fastr/jobs": "workspace:*",
+    "@fastr/orm": "workspace:*",
+    "@fastr/tsconfig": "workspace:*",
+    "eslint": "^8.56.0",
+    "eslint-config-fastr": "workspace:*",
+    "tslib": "^2.6.2",
+    "typescript": "5.3.3",
+    "undici": "^6.3.0"
+  }
+}

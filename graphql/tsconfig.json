@@ -1,0 +1,10 @@
+{
+  "extends": "@fastr/tsconfig/backend.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/types/*.d.ts"],
+      "@/*": ["./src/*"]
+    }
+  }
+}

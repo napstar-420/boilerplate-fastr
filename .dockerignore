@@ -1,0 +1,12 @@
+.git
+.github
+.vscode
+.sst
+.dockerignore
+**/Dockerfile
+**/node_modules
+**/.next
+**/.open-next
+**/.turbo
+**/release
+**/build

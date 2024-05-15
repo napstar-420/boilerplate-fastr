@@ -1,0 +1,59 @@
+name: deploy production 🚀
+
+on:
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - main
+
+jobs:
+  build_deploy:
+    name: build & deploy 👷
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max_old_space_size=16384
+      SST_TELEMETRY_DISABLED: 1
+      COMMIT: ${{ github.sha }}
+    steps:
+      - name: clone repository 📥
+        uses: actions/checkout@v4
+      - name: configure aws credentials ⚙️
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+      - name: install node.js 🔧
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: install pnpm 🔧
+        uses: pnpm/action-setup@v2
+        with:
+          run_install: false
+      - name: fetch pnpm store 📦
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - name: restore pnpm cache 📥
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+      - name: install dependencies 📥
+        run: pnpm i --frozen-lockfile
+      - name: build dependencies 🏗
+        run: pnpm build-packages
+      - name: build sst ⚡
+        run: pnpm sst build --stage production
+      - name: unit tests 👩🏾‍🔬
+        run: pnpm test
+      - name: lint 👩‍🦯
+        run: pnpm lint
+      - name: typecheck 👮🏼
+        run: pnpm typecheck
+      - name: deploy infrastructure 🚀
+        run: pnpm sst deploy --stage production --from .sst/dist

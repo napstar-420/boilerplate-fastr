@@ -1,0 +1,9 @@
+packages:
+  - app
+  - cron
+  - graphql
+  - id
+  - orm
+  - orm/seeders
+  - packages/**
+  - queue

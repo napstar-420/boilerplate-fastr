@@ -1,0 +1,62 @@
+fragment CurrentUser on User {
+  ...UserData
+  touch
+}
+
+fragment UserData on User {
+  id
+  username
+  email
+  image
+}
+
+query currentUser {
+  me {
+    ...CurrentUser
+  }
+}
+
+query myAccounts {
+  accountProviders {
+    ...AccountProviderData
+  }
+  me {
+    id
+    accounts {
+      ...AccountData
+    }
+  }
+}
+
+mutation changeEmailAddress($email: EmailAddress!) {
+  changeEmailAddress(email: $email) {
+    __typename
+    ... on FieldError {
+      field
+      message
+    }
+    ... on MutationChangeEmailAddressSuccess {
+      data {
+        id
+        email
+      }
+    }
+  }
+}
+
+mutation disconnectAccount($id: ID!) {
+  disconnectAccount(id: $id) {
+    __typename
+    ... on Error {
+      message
+    }
+    ... on MutationDisconnectAccountSuccess {
+      data {
+        id
+        accounts {
+          ...AccountData
+        }
+      }
+    }
+  }
+}
